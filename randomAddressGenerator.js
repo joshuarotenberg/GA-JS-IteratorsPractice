@@ -6,21 +6,21 @@ const randomGenerator = () => {
     const city = ["Boulevard Gardens", "Broadview Park", "Chula Vista", "Coconut Creek", "Cooper City", "Coral Springs", "Dania Beach", "Davie", "Deerfield Beach", "Fern Crest Village", "Fort Lauderdale", "Franklin Park", "Hallandale Beach", "Hillsboro Beach", "Hillsboro Pines", "Hollywood", "Lake Forest", "Lauderdale Lakes", "Lauderdale-by-the-Sea", "Lauderhill", "Lazy Lake", "Lighthouse Point", "Margate", "Miramar", "North Lauderdale", "Oakland Park", "Parkland", "Pembroke Park", "Pembroke Pines", "Plantation", "Pompano Beach", "Roosevelt Gardens", "Sea Ranch Lakes", "Southwest Ranches", "Sunrise", "Tamarac", "Washington Park", "West Park", "Weston"];
     const state_abbrev = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 
-    let streetNum = Math.floor(Math.random() * 10000);
+    let streetNum = Math.floor(Math.random() * (10000 - 1 + 1)) + 1;
 
     const singleZipNum = () => {  
         return Math.floor(Math.random() * 9); 
     };
 
-    const zipcode = () => {
+    const fullZip = () => {
         return(`${singleZipNum()}${singleZipNum()}${singleZipNum()}${singleZipNum()}${singleZipNum()}`);
     };
 
-    const randomize = (name) => {  
+    const randomizeAddressPiece = (name) => {  
         return name[Math.floor(Math.random() * name.length)]; 
     }  
 
-    return(`${streetNum} ${randomize(direction)} ${randomize(name)} ${randomize(type)}, ${randomize(city)} ${randomize(state_abbrev)}, ${zipcode()}`);
+    return(`${streetNum} ${randomizeAddressPiece(direction)} ${randomizeAddressPiece(name)} ${randomizeAddressPiece(type)}, ${randomizeAddressPiece(city)} ${randomizeAddressPiece(state_abbrev)}, ${fullZip()}`);
 
 }
 
